@@ -846,14 +846,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding:
     m_Left: 20
-    m_Right: 0
+    m_Right: 20
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 6
   m_Spacing: 5
-  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 0
+  m_ChildControlWidth: 1
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
@@ -934,7 +934,8 @@ MonoBehaviour:
   _titleLastSeenLabel: {fileID: 6945757484960946758}
   _closeButton: {fileID: 7944619748092135381}
   _messagesContainer: {fileID: 1811404724771499933}
-  _messageViewPrefab: {fileID: 2294951444845486372, guid: cf96094ee163d8b48b48b7aa194caf1f, type: 3}
+  _leftSideMessageViewPrefab: {fileID: 4802423087828456653, guid: cf96094ee163d8b48b48b7aa194caf1f, type: 3}
+  _rightSideMessageViewPrefab: {fileID: 4802423087828456653, guid: 9884348218f9e924a80f91f77a4d37b1, type: 3}
 --- !u!1 &8539130587992320907
 GameObject:
   m_ObjectHideFlags: 0

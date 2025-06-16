@@ -123,7 +123,7 @@ namespace PotikotTools.UniTalks
             DialogueData dialogueData = await persistence.LoadAsync(dialoguesRootPath, dialogueName);
             if (dialogueData == null)
             {
-                DL.LogError($"Dialogue data doesn't exist: {dialogueName}");
+                UniTalksAPI.LogError($"Dialogue data doesn't exist: {dialogueName}");
                 return false;
             }
             
@@ -145,7 +145,7 @@ namespace PotikotTools.UniTalks
             DialogueData dialogueData = persistence.Load(dialoguesRootPath, dialogueName);
             if (dialogueData == null)
             {
-                DL.LogError($"Dialogue data doesn't exist: {dialogueName}");
+                UniTalksAPI.LogError($"Dialogue data doesn't exist: {dialogueName}");
                 return false;
             }
             
@@ -186,7 +186,7 @@ namespace PotikotTools.UniTalks
                 if (!LoadDialogue(dialogueName))
                     flag = false;
 
-            DL.Log($"Loaded {dialogueNames.Count} dialogues");
+            UniTalksAPI.Log($"Loaded {dialogueNames.Count} dialogues");
             
             return flag;
         }
@@ -259,7 +259,7 @@ namespace PotikotTools.UniTalks
                 }
                 else
                 {
-                    DL.LogError($"Failed to load AudioClip at path: {path}");
+                    UniTalksAPI.LogError($"Failed to load AudioClip at path: {path}");
                     tcs.SetCanceled();
                 }
             };

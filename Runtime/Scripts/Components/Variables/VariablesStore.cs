@@ -13,9 +13,16 @@ namespace PotikotTools.UniTalks
         
         public T Get<T>(string key, T defaultValue = default)
         {
-            if (_variables.TryGetValue(key, out var v)
-                && v is T cv)
-                return cv;
+            if (_variables.TryGetValue(key, out var v))
+            {
+                switch (v)
+                {
+                    case T cv:
+                        return cv;
+                    case null:
+                        return default;
+                }
+            }
             
             return defaultValue;
         }

@@ -17,7 +17,8 @@ namespace PotikotTools.UniTalks.Demo
 
         [Header("Messages")]
         [SerializeField] private RectTransform _messagesContainer;
-        [SerializeField] private MessageView _messageViewPrefab;
+        [SerializeField] private GameObject _leftSideMessageViewPrefab;
+        [SerializeField] private GameObject _rightSideMessageViewPrefab;
 
         private List<MessageView> _messages;
 
@@ -40,7 +41,18 @@ namespace PotikotTools.UniTalks.Demo
         
         public override void SetText(string text)
         {
-            var message = Instantiate(_messageViewPrefab, _messagesContainer);
+            var message = Instantiate(_leftSideMessageViewPrefab, _messagesContainer)
+                .GetComponentInChildren<MessageView>();
+            
+            message.SetText(text);
+            message.SetAvatar(_titleAvatarImage.sprite);
+            message.SetTime(DateTime.Now);
+        }
+
+        public void SetAnswerText(string text)
+        {
+            var message = Instantiate(_rightSideMessageViewPrefab, _messagesContainer)
+                .GetComponentInChildren<MessageView>();
             
             message.SetText(text);
             message.SetAvatar(_titleAvatarImage.sprite);

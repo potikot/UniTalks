@@ -18,9 +18,9 @@ namespace PotikotTools.UniTalks.Demo
         
         private void Start()
         {
-            Debug.Log("Execute Command");
-            DialoguesComponents.CommandHandler.Execute("UniTalksAPI.StartDialogue", "test");
-            // Initialize();
+            // Debug.Log("Execute Command");
+            // DialoguesComponents.CommandHandler.Execute("UniTalksAPI.StartDialogue", "test");
+            Initialize();
         }
 
         private void Initialize()

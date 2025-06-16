@@ -43,7 +43,7 @@ namespace PotikotTools.UniTalks.Editor
         {
             AddNameInputField();
             AddSpeakersList();
-
+            
             SetPosition(editorData.SettingsPanelPosition);
         }
 
@@ -121,7 +121,7 @@ namespace PotikotTools.UniTalks.Editor
 
                 if (!await editorData.TrySetName(newName))
                 {
-                    DL.LogError($"Failed to change name for dialogue '{editorData.Name}' with '{newName}'");
+                    UniTalksAPI.LogError($"Failed to change name for dialogue '{editorData.Name}' with '{newName}'");
                 }
                 
                 input.SetValueWithoutNotify(editorData.Name);
@@ -210,10 +210,10 @@ namespace PotikotTools.UniTalks.Editor
         
         void OnValueChanged(ChangeEvent<string> evt)
         {
-            DL.Log("ValueChanged");
+            UniTalksAPI.Log("ValueChanged");
             if (evt.target is not TextField { userData: SpeakerData speakerData })
             {
-                DL.LogError("Speaker not found");
+                UniTalksAPI.LogError("Speaker not found");
                 return;
             }
             
