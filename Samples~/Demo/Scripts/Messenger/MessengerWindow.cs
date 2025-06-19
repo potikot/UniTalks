@@ -15,7 +15,7 @@ namespace PotikotTools.UniTalks.Demo
         
         private Dictionary<string, ChatDialogueController> _chats;
         private ChatDialogueController _activeDialogueController;
-        
+
         private void Start()
         {
             // Debug.Log("Execute Command");
@@ -57,22 +57,19 @@ namespace PotikotTools.UniTalks.Demo
                 _chatsContainer.gameObject.SetActive(false);
                 return;
             }
-            
-            DialogueData dialogueData = UniTalksAPI.GetDialogue(dialogueName);
-                
-            if (dialogueData == null)
-                return;
 
             var dialogueView = Instantiate(_chatViewPrefab, _bodyContainer);
-
-            dialogueController = new ChatDialogueController();
-            dialogueController.Initialize(dialogueData, dialogueView);
+            dialogueController = UniTalksAPI.StartDialogue<ChatDialogueController>(dialogueName, dialogueView);
+            if (dialogueController == null)
+            {
+                Destroy(dialogueView.gameObject);
+                return;
+            }
             
             _activeDialogueController?.StopDialogue();
             _activeDialogueController = dialogueController;
             _chats.Add(dialogueName, dialogueController);
             _chatsContainer.gameObject.SetActive(false);
-            dialogueController.StartDialogue();
         }
 
         public void CloseChat()
@@ -80,6 +77,12 @@ namespace PotikotTools.UniTalks.Demo
             _chatsContainer.gameObject.SetActive(true);
             _activeDialogueController?.StopDialogue();
             _activeDialogueController = null;
+        }
+
+        [Command(false)]
+        private static void ClearOptions()
+        {
+            G.Hud.MessengerWindow._activeDialogueController.ClearOptions();
         }
     }
 }

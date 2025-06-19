@@ -24,6 +24,9 @@ namespace PotikotTools.UniTalks
         public static DialogueController StartDialogue(DialogueData data, IDialogueView view) => StartDialogue<DialogueController>(data, view);
         public static T StartDialogue<T>(DialogueData data, IDialogueView view, params object[] args) where T : DialogueController
         {
+            if (data == null)
+                return null;
+            
             var controller = (T)Activator.CreateInstance(typeof(T), args);
             controller.Initialize(data, view);
             controller.StartDialogue();
